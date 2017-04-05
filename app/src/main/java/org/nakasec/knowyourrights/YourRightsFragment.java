@@ -69,11 +69,12 @@ public class YourRightsFragment extends Fragment {
         return false;
       }
 
+      /* TODO(zkim): the following override doesn't work. Find a proper way to override the URL.
       @TargetApi(Build.VERSION_CODES.N)
       @Override
       public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
         return shouldOverrideUrlLoading(view, request.toString());
-      }
+      }*/
     });
 
     LoadYourRights(rootView);
