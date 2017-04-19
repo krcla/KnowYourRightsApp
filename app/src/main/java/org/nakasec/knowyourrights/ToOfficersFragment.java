@@ -15,12 +15,14 @@
 // TODO: High-level file comment.
 package org.nakasec.knowyourrights;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 /**
  * A fragment for "ToOfficers."
@@ -33,6 +35,24 @@ public class ToOfficersFragment extends Fragment {
                            Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment3, container, false);
     WebView webView = (WebView) rootView.findViewById(R.id.section_to_officers);
+    webView.setWebViewClient(new WebViewClient() {
+      @SuppressWarnings("deprecation")
+      @Override
+      public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        if (url.equals("file:///android_asset/to_officers.html?speak=true")) {
+          MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.to_officers);
+          mediaPlayer.start();
+        }
+        return false;
+      }
+
+      /* TODO(zkim): the following override doesn't work. Find a proper way to override the URL.
+      @TargetApi(Build.VERSION_CODES.N)
+      @Override
+      public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+        return shouldOverrideUrlLoading(view, request.toString());
+      }*/
+    });
     webView.loadUrl("file:///android_asset/to_officers.html");
     return rootView;
   }
