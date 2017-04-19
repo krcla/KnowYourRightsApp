@@ -4,7 +4,10 @@
   <style>
     body {
       font-family: Arial, Helvetica, sans-serif;
+      background: #eee;
+      margin: 0px !important;
     }
+    
     div.title {
       font-family: "Arial Black", Gadget, sans-serif;
       font-size: 200%;
@@ -12,19 +15,43 @@
       text-align: center;
       color: White;
       background-color: MidnightBlue;
+     
     }
-    p.intro { font-size: 90%; }
+    p.intro {
+      font-size: 90%;
+      font-weight: bold;
+      margin: 12px 8px 12px 8px;
+
+    }
+    
     div.header {
       text-transform: uppercase;
       font-size: 125%;
       text-align: center;
       color: White;
-      background-color: DarkSeaGreen;
+      background-color: orange;
+      padding: 8px;      
+
     }
+    
     div.instruction {
-      color: DarkSeaGreen;
-      background-color: White;
+      padding: 8px 8px 12px 8px;
+      color: #000;
+      background-color: #eee;
     }
+
+    div.footer {
+      font-weight: bold;
+      background-color: MidnightBlue;
+      color: #fff;
+      padding: 8px;
+      font-size: 120%;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    div.footer a {color: orange;}
+
   </style>
 </head>
 
@@ -67,10 +94,12 @@
   Card and call our 24-hour hotline at 1-844-500-3222.
 </div>
 
+<div class="footer">
 <p>
 For additional instructions, visit
-<a href="http://nakasec.org/rights">nakasec.org/rights</a>
+<a href="http://nakasec.org/rights" target="blank">nakasec.org/rights</a>
 </p>
+</div>
 
 </body>
 </html>
