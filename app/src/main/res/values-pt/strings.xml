@@ -2,5 +2,5 @@
 <resources>
   <string name="your_rights_url">file:///android_asset/your_rights_pt.html</string>
   <string name="nakasec_phone_description">NAKASEC (Inglês/Coreano)</string>
-  <string name="uwd_phone_description">United We Dream (Espanhol/Inglês)</string>
+  <string name="uwd_phone_description">United We Dream (Inglês/Espanhol)</string>
 </resources>
