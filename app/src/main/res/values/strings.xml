@@ -6,8 +6,10 @@
     <string name="section_to_officers">To Officers</string>
     <string name="section_hotline">Hotline</string>
     <string name="your_rights_url">file:///android_asset/your_rights_en.html</string>
-    <string name="call_emergency_hotline">Call Emergency Hotline</string>
     <string name="phone_not_available">Cannot Use Phone</string>
-    <string name="hotline_phone_number">1-844-363-1423</string>
+    <string name="nakasec_phone_number">1-844-500-3222</string>
+    <string name="uwd_phone_number">1-844-363-1423</string>
     <string name="about_url">http://nakasec.org/rights</string>
+    <string name="nakasec_phone_description">Call NAKASEC (English/Spanish)</string>
+    <string name="uwd_phone_description">Call United We Dream (English/Spanish)</string>
 </resources>

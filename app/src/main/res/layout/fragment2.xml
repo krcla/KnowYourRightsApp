@@ -6,11 +6,39 @@
     android:orientation="vertical"
     android:gravity="center_vertical|center">
 
-    <Button
-        android:text="@string/hotline_phone_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:textSize="24sp" />
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/nakasec_phone_description"
+      android:text="@string/nakasec_phone_description"
+      android:gravity="center"
+      android:textSize="20sp"/>
+
+  <Button
+      android:text="@string/nakasec_phone_number"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/nakasec_button"
+      android:textSize="24sp" />
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="40sp"
+      android:gravity="center"/>
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/uwd_phone_description"
+      android:text="@string/uwd_phone_description"
+      android:gravity="center"
+      android:textSize="18sp"/>
+
+  <Button
+      android:text="@string/uwd_phone_number"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/uwd_button"
+      android:textSize="24sp" />
 
 </LinearLayout>

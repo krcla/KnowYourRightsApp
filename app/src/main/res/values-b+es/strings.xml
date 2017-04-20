@@ -1,7 +1,0 @@
-<resources>
-    <string name="action_language">Idioma del sistema&#8230;</string>
-    <string name="action_about">Acerca de&#8230;</string>
-    <string name="your_rights_url">file:///android_asset/your_rights_es.html</string>
-    <string name="phone_not_available">No puede usar el celular</string>
-    <string name="hotline_phone_number">1-844-363-1423</string>
-</resources>

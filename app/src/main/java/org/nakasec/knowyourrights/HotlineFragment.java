@@ -69,8 +69,10 @@ public class HotlineFragment extends Fragment {
           PERMISSIONS_REQUEST_CALL_PHONE);
     }
     // By default, phone is not available.
-    Button button = (Button) rootView.findViewById(R.id.button);
-    button.setText(getString(R.string.phone_not_available));
+    Button nakasecButton = (Button) rootView.findViewById(R.id.nakasec_button);
+    nakasecButton.setText(getString(R.string.phone_not_available));
+    Button uwdButton = (Button) rootView.findViewById(R.id.uwd_button);
+    uwdButton.setText(getString(R.string.phone_not_available));
     return rootView;
   }
 
@@ -92,12 +94,21 @@ public class HotlineFragment extends Fragment {
   }
 
   private void DisplayHotline(View rootView) {
-    Button button = (Button) rootView.findViewById(R.id.button);
-    final String phoneNumber = getString(R.string.hotline_phone_number);
-    button.setText(getString(R.string.call_emergency_hotline) + "\n" + phoneNumber);
-    button.setOnClickListener(new View.OnClickListener() {
+    Button nakasecButton = (Button) rootView.findViewById(R.id.nakasec_button);
+    final String nakasecPhoneNumber = getString(R.string.nakasec_phone_number);
+    nakasecButton.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
-        String uri = "tel:" + phoneNumber;
+        String uri = "tel:" + nakasecPhoneNumber;
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        intent.setData(Uri.parse(uri));
+        startActivity(intent);
+      }
+    });
+    Button uwdButton = (Button) rootView.findViewById(R.id.uwd_button);
+    final String uwdPhoneNumber = getString(R.string.uwd_phone_number);
+    uwdButton.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        String uri = "tel:" + uwdPhoneNumber;
         Intent intent = new Intent(Intent.ACTION_CALL);
         intent.setData(Uri.parse(uri));
         startActivity(intent);
