@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="action_language">Sistema Idioma&#8230;</string>
+  <string name="action_about">Sobre&#8230;</string>
   <string name="your_rights_url">file:///android_asset/your_rights_pt.html</string>
+  <string name="phone_not_available">Você não pode usar celular</string>
+  <string name="app_name">Conheça Os Seus Direitos</string>
+  <string name="section_hotline">Hotline</string>
+  <string name="section_to_officers">Os Oficiais</string>
+  <string name="section_your_rights">Seus Direitos</string>
   <string name="nakasec_phone_description">NAKASEC (Inglês/Coreano)</string>
   <string name="uwd_phone_description">United We Dream (Inglês/Espanhol)</string>
 </resources>
