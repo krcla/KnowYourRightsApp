@@ -9,4 +9,7 @@
   <string name="section_your_rights">Sus Derechos</string>
   <string name="nakasec_phone_description">NAKASEC (Inglés/Coreano)</string>
   <string name="uwd_phone_description">United We Dream (Español/Inglés)</string>
+    <string name="about_url">http://nakasec.org/rights</string>
+  <string name="nakasec_phone_number">1-844-500-3222</string>
+  <string name="uwd_phone_number">1-844-363-1423</string>
 </resources>

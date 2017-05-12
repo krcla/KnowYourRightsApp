@@ -9,4 +9,7 @@
   <string name="phone_not_available">전화를 사용할 수 없습니다</string>
   <string name="about_url">http://nakasec.org/ko/rights</string>
   <string name="nakasec_phone_description">미교협 전화연결 (한/영)</string>
+    <string name="nakasec_phone_number">1-844-500-3222</string>
+  <string name="uwd_phone_description">Call United We Dream (English/Spanish)</string>
+  <string name="uwd_phone_number">1-844-363-1423</string>
 </resources>
