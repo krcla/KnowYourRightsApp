@@ -54,6 +54,11 @@ public class ToOfficersFragment extends Fragment {
       }*/
     });
     webView.loadUrl("file:///android_asset/to_officers.html");
+
+    // Enable pinch zooming.
+    webView.getSettings().setBuiltInZoomControls(true);
+    webView.getSettings().setDisplayZoomControls(false);
+
     return rootView;
   }
 }

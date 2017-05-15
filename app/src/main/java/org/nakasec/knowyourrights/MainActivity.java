@@ -109,8 +109,10 @@ public class MainActivity extends AppCompatActivity {
         case 0:
           return new YourRightsFragment();
         case 1:
+          // HotlineFragment needs to be initialized before creating a new instance.
           boolean hasPhone = getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
-          return HotlineFragment.getInstance(hasPhone);
+          HotlineFragment.initialize(hasPhone);
+          return new HotlineFragment();
         case 2:
           return new ToOfficersFragment();
       }

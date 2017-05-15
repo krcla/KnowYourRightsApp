@@ -33,25 +33,16 @@ import android.widget.Button;
  * A fragment for "Hotline."
  */
 public class HotlineFragment extends Fragment {
-  public static final String HAS_PHONE_KEY = "hasPhone";
   public static final int PERMISSIONS_REQUEST_CALL_PHONE = 1;
 
-  private boolean hasPhone;
+  private static boolean hasPhone;
 
   // Do not use this constructor but call getInstance() instead.
   public HotlineFragment() {}
 
-  public static HotlineFragment getInstance(boolean hasPhone) {
-    HotlineFragment fragment = new HotlineFragment();
-    Bundle args = new Bundle();
-    args.putBoolean(HAS_PHONE_KEY, hasPhone);
-    fragment.setArguments(args);
-    return fragment;
-  }
-
-  @Override
-  public void setArguments(Bundle bundle) {
-    this.hasPhone = bundle.getBoolean(HAS_PHONE_KEY);
+  // This class needs to be initialized before created.
+  public static void initialize(boolean hasPhoneValue) {
+    hasPhone = hasPhoneValue;
   }
 
   @Override

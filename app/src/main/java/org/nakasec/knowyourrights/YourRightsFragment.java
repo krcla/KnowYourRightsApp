@@ -109,5 +109,9 @@ public class YourRightsFragment extends Fragment {
     }
     WebView webView = (WebView) rootView.findViewById(R.id.section_yourrights);
     webView.loadUrl(yourRightsUrl);
+
+    // Enable pinch zooming.
+    webView.getSettings().setBuiltInZoomControls(true);
+    webView.getSettings().setDisplayZoomControls(false);
   }
 }
