@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">了解你的权利/string>
+    <string name="action_language">系统语言设置&#8230;</string>
+    <string name="action_about">关于&#8230;</string>
+    <string name="section_your_rights">你的权利</string>
+    <string name="section_to_officers">致警官/string>
+    <string name="section_hotline">热线</string>
+    <string name="your_rights_url">file:///android_asset/your_rights_zh.html</string>
+    <string name="phone_not_available">无法使用电话</string>
+    <string name="nakasec_phone_number">1-844-500-3222</string>
+    <string name="uwd_phone_number">1-844-363-1423</string>
+    <string name="about_url">http://nakasec.org/rights</string>
+    <string name="nakasec_phone_description">呼叫 NAKASEC (英语/朝鲜语)</string>
+    <string name="uwd_phone_description">呼叫 United We Dream (英语/西班牙语)</string>
+</resources>
