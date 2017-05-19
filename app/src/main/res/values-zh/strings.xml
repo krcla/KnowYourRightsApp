@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">了解你的权利/string>
+    <string name="app_name">了解你的权利</string>
     <string name="action_language">系统语言设置&#8230;</string>
     <string name="action_about">关于&#8230;</string>
     <string name="section_your_rights">你的权利</string>
-    <string name="section_to_officers">致警官/string>
+    <string name="section_to_officers">致警官</string>
     <string name="section_hotline">热线</string>
     <string name="your_rights_url">file:///android_asset/your_rights_zh.html</string>
     <string name="phone_not_available">无法使用电话</string>

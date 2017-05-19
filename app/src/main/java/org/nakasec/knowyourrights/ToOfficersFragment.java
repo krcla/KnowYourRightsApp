@@ -30,9 +30,14 @@ import android.webkit.WebViewClient;
 public class ToOfficersFragment extends Fragment {
   public ToOfficersFragment() {}
 
+  MediaPlayer mediaPlayer;
+
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
+    if (mediaPlayer == null) {
+      mediaPlayer = MediaPlayer.create(getContext(), R.raw.to_officers);
+    }
     View rootView = inflater.inflate(R.layout.fragment3, container, false);
     WebView webView = (WebView) rootView.findViewById(R.id.section_to_officers);
     webView.setWebViewClient(new WebViewClient() {
@@ -40,8 +45,11 @@ public class ToOfficersFragment extends Fragment {
       @Override
       public boolean shouldOverrideUrlLoading(WebView view, String url) {
         if (url.equals("file:///android_asset/to_officers.html?speak=true")) {
-          MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.to_officers);
-          mediaPlayer.start();
+          if (mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+          } else {
+            mediaPlayer.start();
+          }
         }
         return false;
       }

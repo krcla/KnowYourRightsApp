@@ -38,6 +38,7 @@ public class YourRightsFragment extends Fragment {
   private static final Locale SPANISH = new Locale("es-US");
   private static final Locale KOREAN = new Locale("ko-KR");
   private static final Locale PORTUGUESE = new Locale("pt-PT");
+  private static final Locale CHINESE = new Locale("zh-CN");
   private Locale locale;
 
   public YourRightsFragment() {}
@@ -65,6 +66,9 @@ public class YourRightsFragment extends Fragment {
             break;
           case "file:///android_asset/your_rights_languages.html?locale=pt_PT":
             locale = PORTUGUESE;
+            break;
+          case "file:///android_asset/your_rights_languages.html?locale=zh_CN":
+            locale = CHINESE;
             break;
           default:
             throw new UnsupportedOperationException("Unknown locale: " + url);
@@ -102,6 +106,9 @@ public class YourRightsFragment extends Fragment {
           break;
         case "pt-pt":
           yourRightsUrl = "file:///android_asset/your_rights_pt.html";
+          break;
+        case "zh-cn":
+          yourRightsUrl = "file:///android_asset/your_rights_zh.html";
           break;
         default:
           throw new UnsupportedOperationException("Unknown locale: " + localeString);
