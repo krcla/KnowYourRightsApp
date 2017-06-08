@@ -2,10 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.jenandzu.knowyourrights.MainActivity" >
-    <item android:id="@+id/action_language"
-        android:title="@string/action_language"
+    <item
+        android:id="@+id/action_share"
+        android:icon="@android:drawable/ic_menu_share"
         android:orderInCategory="100"
-        app:showAsAction="never" />
+        android:title="@string/action_share"
+        app:showAsAction="never"/>
     <item android:id="@+id/action_about"
         android:title="@string/action_about"
         android:orderInCategory="100"

@@ -32,6 +32,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
+  private static final String APP_URL = "http://nakasec.org/rights";
+
   /**
    * The {@link android.support.v4.view.PagerAdapter} that will provide fragments for each of the
    * sections. We use a {@link FragmentPagerAdapter} derivative, which will keep every loaded
@@ -75,9 +77,11 @@ public class MainActivity extends AppCompatActivity {
   public boolean onOptionsItemSelected(MenuItem item) {
     int id = item.getItemId();
     switch (id) {
-      case R.id.action_language: {
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.setClassName("com.android.settings", "com.android.settings.LanguageSettings");
+      case R.id.action_share: {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT, APP_URL);
+        intent.setType("text/plain");
         startActivity(intent);
         return true;
       }
