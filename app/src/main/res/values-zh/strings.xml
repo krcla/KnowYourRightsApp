@@ -12,5 +12,5 @@
     <string name="about_url">http://nakasec.org/rights</string>
     <string name="nakasec_phone_description">呼叫 NAKASEC (英语/朝鲜语)</string>
     <string name="uwd_phone_description">呼叫 United We Dream (英语/西班牙语)</string>
-  <string name="action_share">推荐我们</string>
+  <string name="action_share">推荐我们...</string>
 </resources>

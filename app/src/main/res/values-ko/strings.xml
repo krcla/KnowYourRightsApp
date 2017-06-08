@@ -12,5 +12,5 @@
   <string name="nakasec_phone_number">1-844-500-3222</string>
   <string name="uwd_phone_description">Call United We Dream (영어/스페인어)</string>
   <string name="uwd_phone_number">1-844-363-1423</string>
-  <string name="action_share">앱 알리기</string>
+  <string name="action_share">앱 알리기...</string>
 </resources>

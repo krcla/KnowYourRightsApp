@@ -13,5 +13,5 @@
     <string name="about_url">http://nakasec.org/rights</string>
   <string name="nakasec_phone_number">1-844-500-3222</string>
   <string name="uwd_phone_number">1-844-363-1423</string>
-  <string name="action_share">Divulgue</string>
+  <string name="action_share">Divulgue...</string>
 </resources>
