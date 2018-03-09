@@ -12,5 +12,5 @@
     <string name="about_url">http://nakasec.org/rights</string>
     <string name="nakasec_phone_description">Call NAKASEC (English/Korean)</string>
     <string name="uwd_phone_description">Call United We Dream (English/Spanish)</string>
-    <string name="action_share">Spread the app...</string>
+    <string name="action_share">Spread the app&#8230;</string>
 </resources>
