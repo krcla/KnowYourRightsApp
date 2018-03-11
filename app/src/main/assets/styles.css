@@ -27,8 +27,7 @@ div.header {
   text-align: center;
   color: White;
   background-color: orange;
-  padding: 8px;      
-
+  padding: 8px;
 }
 
 div.instruction {
@@ -54,4 +53,9 @@ div.message {
   font-size: 150%;
   color: #000;
   background-color: #eee;
+}
+
+div.divider {
+  background-color: #ddd;
+  padding: 8px;
 }

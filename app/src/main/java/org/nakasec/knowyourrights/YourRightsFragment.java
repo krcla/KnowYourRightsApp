@@ -18,6 +18,7 @@ package org.nakasec.knowyourrights;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -34,18 +35,14 @@ import java.util.Locale;
  * A fragment for "Your Rights."
  */
 public class YourRightsFragment extends Fragment implements NumberPicker.OnValueChangeListener{
-  private static final Locale ENGLISH = new Locale("en-US");
-  private static final Locale SPANISH = new Locale("es-US");
-  private static final Locale KOREAN = new Locale("ko-KR");
-  private static final Locale PORTUGUESE = new Locale("pt-PT");
-  private static final Locale CHINESE = new Locale("zh-CN");
-  private static final Locale HAITIAN = new Locale("ht-HT");
-  private static final Locale ALL_LOCALES[] =
-      { ENGLISH, SPANISH, KOREAN, PORTUGUESE, CHINESE, HAITIAN };
+  private static final String LOCALE_KEY = "Locale";
+  private static final String USER_SETTINGS_KEY = "UserSettings";
+
+  private static final String ALL_LOCALES[] = { "en", "es", "ko", "pt", "zh", "ht" };
   private static final String LOCALE_NAMES[] =
       { "English", "Español", "한국어", "Português", "中文", "Kreyòl Ayisyen" };
 
-  private Locale locale;
+  private String locale;
 
   public YourRightsFragment() {}
 
@@ -54,7 +51,9 @@ public class YourRightsFragment extends Fragment implements NumberPicker.OnValue
                            Bundle savedInstanceState) {
     final View rootView = inflater.inflate(R.layout.fragment1, container, false);
     final NumberPicker.OnValueChangeListener listener = this;
+    setLocale();
     Button languagePickerButton = (Button) rootView.findViewById(R.id.language_picker_button);
+    languagePickerButton.setText(getLocaleName(locale));
     languagePickerButton.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         LanguagePickerDialogFragment newFragment = new LanguagePickerDialogFragment();
@@ -68,39 +67,59 @@ public class YourRightsFragment extends Fragment implements NumberPicker.OnValue
 
   @Override
   public void onValueChange(NumberPicker numberPicker, int oldVal, int newVal) {
-    locale = ALL_LOCALES[newVal];
+    changeLocale(ALL_LOCALES[newVal]);
     Button languagePickerButton = (Button) getView().findViewById(R.id.language_picker_button);
     languagePickerButton.setText(LOCALE_NAMES[newVal]);
     LoadYourRights(getView());
   }
 
-  private void LoadYourRights(View rootView) {
-    String yourRightsUrl = getString(R.string.your_rights_url);
-    if (locale != null) {
-      // TODO(zkim): do this properly by loading a proper resource for the locale.
-      String localeString = locale.toString();
-      switch (localeString) {
-        case "en-us":
-          yourRightsUrl = "file:///android_asset/your_rights_en.html";
-          break;
-        case "es-us":
-          yourRightsUrl = "file:///android_asset/your_rights_es.html";
-          break;
-        case "ko-kr":
-          yourRightsUrl = "file:///android_asset/your_rights_ko.html";
-          break;
-        case "pt-pt":
-          yourRightsUrl = "file:///android_asset/your_rights_pt.html";
-          break;
-        case "zh-cn":
-          yourRightsUrl = "file:///android_asset/your_rights_zh.html";
-          break;
-        case "ht-ht":
-          yourRightsUrl = "file:///android_asset/your_rights_ht.html";
-          break;
-        default:
-          throw new UnsupportedOperationException("Unknown locale: " + localeString);
+  // Reads the user default or use the system locale.
+  private void setLocale() {
+    String systemLocale = Locale.getDefault().toString();
+    SharedPreferences settings = getContext().getSharedPreferences(USER_SETTINGS_KEY, 0);
+    locale = settings.getString(LOCALE_KEY, systemLocale);
+  }
+
+  // Change the locale value and store it to user default.
+  private void changeLocale(String toLocale) {
+    locale = toLocale;
+    SharedPreferences setting = getContext().getSharedPreferences(USER_SETTINGS_KEY, 0);
+    SharedPreferences.Editor editor = setting.edit();
+    editor.putString(LOCALE_KEY, locale);
+    editor.apply();
+  }
+
+  // Returns the local name (LOCALE_NAMES) given a locale string.
+  private String getLocaleName(String locale) {
+    for (int i = 0; i < ALL_LOCALES.length; i++) {
+      if (locale.startsWith(ALL_LOCALES[i])) {
+        return LOCALE_NAMES[i];
       }
+    }
+    return LOCALE_NAMES[0];
+  }
+
+  private void LoadYourRights(View rootView) {
+    String yourRightsUrl = "file:///android_asset/your_rights_en.html";
+    switch (locale.substring(0, 2)) {
+      case "es":
+        yourRightsUrl = "file:///android_asset/your_rights_es.html";
+        break;
+      case "ko":
+        yourRightsUrl = "file:///android_asset/your_rights_ko.html";
+        break;
+      case "pt":
+        yourRightsUrl = "file:///android_asset/your_rights_pt.html";
+        break;
+      case "zh":
+        yourRightsUrl = "file:///android_asset/your_rights_zh.html";
+        break;
+      case "ht":
+        yourRightsUrl = "file:///android_asset/your_rights_ht.html";
+        break;
+      default:
+        // Show the default (English).
+        break;
     }
     WebView webView = (WebView) rootView.findViewById(R.id.section_yourrights);
     webView.loadUrl(yourRightsUrl);
