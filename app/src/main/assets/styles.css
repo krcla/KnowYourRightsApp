@@ -13,6 +13,7 @@ div.title {
   background-color: MidnightBlue;
 
 }
+
 p.intro {
   font-size: 100%;
   font-weight: bold;
@@ -47,3 +48,10 @@ div.footer {
 }
 
 div.footer a {color: orange;}
+
+div.message {
+  padding: 8px 8px 12px 8px;
+  font-size: 150%;
+  color: #000;
+  background-color: #eee;
+}
