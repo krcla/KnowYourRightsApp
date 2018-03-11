@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Konnen dwa ou</string>
+  <string name="about_url">http://nakasec.org/rights</string>
+  <string name="action_about">Osijè&#8230;</string>
+  <string name="action_language">Reglaj Sistèm Lang&#8230;</string>
+  <string name="section_your_rights">Dwa ou</string>
+  <string name="section_to_officers">Pou Ajan yo</string>
+  <string name="section_hotline">Liy telefòn dirèk</string>
+  <string name="phone_not_available">Pa ka itilize Telefòn</string>
+  <string name="nakasec_phone_description">Rele NAKASEC (Angle/Koreyen)</string>
+  <string name="nakasec_phone_number">1-844-500-3222</string>
+  <string name="uwd_phone_description">Rele United We Dream (Angle/Panyòl)</string>
+  <string name="uwd_phone_number">1-844-363-1423</string>
+  <string name="your_rights_url">file:///android_asset/your_rights_ht.html</string>
+  <string name="action_share">Pwopaje aplikasyon an...</string>
+</resources>

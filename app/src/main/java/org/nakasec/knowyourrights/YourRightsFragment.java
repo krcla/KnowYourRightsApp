@@ -15,30 +15,36 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package org.nakasec.knowyourrights;
 
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.os.Build;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.NumberPicker;
 
 import java.util.Locale;
 
 /**
  * A fragment for "Your Rights."
  */
-public class YourRightsFragment extends Fragment {
+public class YourRightsFragment extends Fragment implements NumberPicker.OnValueChangeListener{
   private static final Locale ENGLISH = new Locale("en-US");
   private static final Locale SPANISH = new Locale("es-US");
   private static final Locale KOREAN = new Locale("ko-KR");
   private static final Locale PORTUGUESE = new Locale("pt-PT");
   private static final Locale CHINESE = new Locale("zh-CN");
+  private static final Locale HAITIAN = new Locale("ht-HT");
+  private static final Locale ALL_LOCALES[] =
+      { ENGLISH, SPANISH, KOREAN, PORTUGUESE, CHINESE, HAITIAN };
+  private static final String LOCALE_NAMES[] =
+      { "English", "Español", "한국어", "Português", "中文", "Kreyòl Ayisyen" };
+
   private Locale locale;
 
   public YourRightsFragment() {}
@@ -47,46 +53,25 @@ public class YourRightsFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
     final View rootView = inflater.inflate(R.layout.fragment1, container, false);
-
-    WebView webView = (WebView) rootView.findViewById(R.id.section_languages);
-    webView.loadUrl("file:///android_asset/your_rights_languages.html");
-    webView.setWebViewClient(new WebViewClient() {
-      @SuppressWarnings("deprecation")
-      @Override
-      public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        switch (url) {
-          case "file:///android_asset/your_rights_languages.html?locale=en_US":
-            locale = ENGLISH;
-            break;
-          case "file:///android_asset/your_rights_languages.html?locale=es_US":
-            locale = SPANISH;
-            break;
-          case "file:///android_asset/your_rights_languages.html?locale=ko_KR":
-            locale = KOREAN;
-            break;
-          case "file:///android_asset/your_rights_languages.html?locale=pt_PT":
-            locale = PORTUGUESE;
-            break;
-          case "file:///android_asset/your_rights_languages.html?locale=zh_CN":
-            locale = CHINESE;
-            break;
-          default:
-            throw new UnsupportedOperationException("Unknown locale: " + url);
-        }
-        LoadYourRights(rootView);
-        return false;
+    final NumberPicker.OnValueChangeListener listener = this;
+    Button languagePickerButton = (Button) rootView.findViewById(R.id.language_picker_button);
+    languagePickerButton.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        LanguagePickerDialogFragment newFragment = new LanguagePickerDialogFragment();
+        newFragment.setValueChangeListener(listener);
+        newFragment.show(getFragmentManager(), "language picker");
       }
-
-      /* TODO(zkim): the following override doesn't work. Find a proper way to override the URL.
-      @TargetApi(Build.VERSION_CODES.N)
-      @Override
-      public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-        return shouldOverrideUrlLoading(view, request.toString());
-      }*/
     });
-
     LoadYourRights(rootView);
     return rootView;
+  }
+
+  @Override
+  public void onValueChange(NumberPicker numberPicker, int oldVal, int newVal) {
+    locale = ALL_LOCALES[newVal];
+    Button languagePickerButton = (Button) getView().findViewById(R.id.language_picker_button);
+    languagePickerButton.setText(LOCALE_NAMES[newVal]);
+    LoadYourRights(getView());
   }
 
   private void LoadYourRights(View rootView) {
@@ -110,6 +95,9 @@ public class YourRightsFragment extends Fragment {
         case "zh-cn":
           yourRightsUrl = "file:///android_asset/your_rights_zh.html";
           break;
+        case "ht-ht":
+          yourRightsUrl = "file:///android_asset/your_rights_ht.html";
+          break;
         default:
           throw new UnsupportedOperationException("Unknown locale: " + localeString);
       }
@@ -120,5 +108,33 @@ public class YourRightsFragment extends Fragment {
     // Enable pinch zooming.
     webView.getSettings().setBuiltInZoomControls(true);
     webView.getSettings().setDisplayZoomControls(false);
+  }
+
+  public static class LanguagePickerDialogFragment extends DialogFragment {
+    private NumberPicker.OnValueChangeListener valueChangeListener;
+
+    @Override
+    public Dialog onCreateDialog(Bundle saveInstanceState) {
+      final NumberPicker languagePicker = new NumberPicker(getActivity());
+      languagePicker.setMinValue(0);
+      languagePicker.setMaxValue(5);
+      languagePicker.setDisplayedValues(LOCALE_NAMES);
+
+      AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+      builder.setTitle("Languages");
+      builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+          valueChangeListener.onValueChange(languagePicker,
+              languagePicker.getValue(), languagePicker.getValue());
+        }
+      });
+      builder.setView(languagePicker);
+      return builder.create();
+    }
+
+    public void setValueChangeListener(NumberPicker.OnValueChangeListener valueChangeListener) {
+      this.valueChangeListener = valueChangeListener;
+    }
   }
 }

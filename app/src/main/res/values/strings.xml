@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Know Your Rights</string>
     <string name="action_language">System Language Setting&#8230;</string>
-    <string name="action_about">About&#8230;</string>
     <string name="section_your_rights">Your Rights</string>
     <string name="section_to_officers">To Officers</string>
     <string name="section_hotline">Hotline</string>
@@ -13,4 +12,5 @@
     <string name="nakasec_phone_description">Call NAKASEC (English/Korean)</string>
     <string name="uwd_phone_description">Call United We Dream (English/Spanish)</string>
     <string name="action_share">Spread the app...</string>
+    <string name="action_about">About&#8230;</string>
 </resources>

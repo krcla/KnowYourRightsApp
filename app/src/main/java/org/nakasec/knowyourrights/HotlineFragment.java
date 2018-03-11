@@ -77,6 +77,7 @@ public class HotlineFragment extends Fragment {
         // If request is cancelled, the result arrays are empty.
         if (grantResults.length > 0
             && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+          hasPhone = true; // In case this is called before onCreateView()
           DisplayHotline(getView());
         }
         return;
@@ -96,6 +97,7 @@ public class HotlineFragment extends Fragment {
         startActivity(intent);
       }
     });
+    nakasecButton.setText(nakasecPhoneNumber);
     Button uwdButton = (Button) rootView.findViewById(R.id.uwd_button);
     final String uwdPhoneNumber = getString(R.string.uwd_phone_number);
     uwdButton.setOnClickListener(new View.OnClickListener() {
@@ -106,5 +108,6 @@ public class HotlineFragment extends Fragment {
         startActivity(intent);
       }
     });
+    uwdButton.setText(uwdPhoneNumber);
   }
 }
